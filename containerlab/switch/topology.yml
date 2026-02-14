@@ -1,0 +1,19 @@
+name: simple-switch
+
+topology:
+  switch1:
+    kind: linux
+    image: alpine:latest
+    # use linux container to emulate a simple switch with bridge
+
+  hostA:
+    kind: linux
+    image: alpine:latest
+
+  hostB:
+    kind: linux
+    image: alpine:latest
+
+links:
+  - endpoints: [hostA:eth1, switch1:eth1]
+  - endpoints: [hostB:eth1, switch1:eth2]
